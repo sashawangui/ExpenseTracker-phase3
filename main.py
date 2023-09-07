@@ -105,3 +105,41 @@ def delete_user():
     else:
         print('User not found.')
 
+def main():
+    while True:
+        print("\nExpense Tracker")
+        print("Commands:")
+        print("1. List Expenses")
+        print("2. List Categories")
+        print("3. Add Expense")
+        print("4. Search Expenses by Category")
+        print("5. Search Expenses by Date")
+        print("6. Delete Expense by ID")
+        print("7. Delete User by ID")
+        print("8. Quit")
+
+        choice = input("Enter your choice (1/2/3/4/5/6/7/8): ")
+
+        if choice == "1":
+            list_expenses()
+        elif choice == "2":
+            list_categories()
+        elif choice == "3":
+            add_expense()
+        elif choice == "4":
+            search_expenses_by_category()
+        elif choice == "5":
+            search_expenses_by_date()
+        elif choice == "6":
+            delete_expense()
+        elif choice == "7":
+            delete_user()
+        elif choice == "8":
+            print("Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+
+if __name__ == '__main__':
+    main()
