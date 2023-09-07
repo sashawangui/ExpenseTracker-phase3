@@ -93,3 +93,15 @@ def delete_expense():
     else:
         print('Expense not found.')
 
+def delete_user():
+    user_id = int(input("Enter User ID to delete: "))
+    session = Session()
+    user = session.query(User).filter_by(id=user_id).first()
+
+    if user:
+        session.delete(user)
+        session.commit()
+        print('User deleted successfully.')
+    else:
+        print('User not found.')
+
