@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from models import User, Expense
+from models import User, Expense, Category
 from datetime import datetime
 
 
@@ -26,16 +26,17 @@ def list_categories():
     for category in categories:
         print(category)
 
+
 def add_expense():
     user_id = int(input("Enter User ID: "))
     category = str(input("Enter Category: "))
     amount = int(input("Enter Amount: "))
-    date_str = input("Enter Date (YYYY-MM-DD): ")
+    date_str = input("Enter Date (DD-MM-YYYY): ")
 
     try:
         date = datetime.strptime(date_str, "%d/%m/%Y").date()
     except ValueError:
-        print("Invalid date format. Please use 'YYYY-MM-DD' format.")
+        print("Invalid date format. Please use 'DD-MM-YYYY' format.")
         return
 
     session = Session()
@@ -54,6 +55,7 @@ def add_expense():
     else:
         print('User not found.')
 
+
 def search_expenses_by_category():
     category = input("Enter Category to search for: ")
     session = Session()
@@ -67,8 +69,9 @@ def search_expenses_by_category():
     else:
         print(f'No expenses found for the category: {category}')
 
+
 def search_expenses_by_date():
-    date = input("Enter Date (YYYY-MM-DD) to search for: ")
+    date = input("Enter Date (DD-MM-YYYY) to search for: ")
     session = Session()
     expenses = session.query(Expense).filter_by(date=date).all()
 
@@ -93,6 +96,7 @@ def delete_expense():
     else:
         print('Expense not found.')
 
+
 def delete_user():
     user_id = int(input("Enter User ID to delete: "))
     session = Session()
@@ -104,6 +108,7 @@ def delete_user():
         print('User deleted successfully.')
     else:
         print('User not found.')
+
 
 def main():
     while True:
