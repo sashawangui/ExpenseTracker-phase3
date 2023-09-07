@@ -66,3 +66,30 @@ def search_expenses_by_category():
                 f"ID: {expense.id}, User ID: {expense.user_id}, Amount: {expense.amount}, Date: {expense.date}")
     else:
         print(f'No expenses found for the category: {category}')
+
+def search_expenses_by_date():
+    date = input("Enter Date (YYYY-MM-DD) to search for: ")
+    session = Session()
+    expenses = session.query(Expense).filter_by(date=date).all()
+
+    if expenses:
+        print(f"\nExpenses on Date '{date}':")
+        for expense in expenses:
+            print(
+                f"ID: {expense.id}, User ID: {expense.user_id}, Category: {expense.category}, Amount: {expense.amount}")
+    else:
+        print(f'No expenses found for the date: {date}')
+
+
+def delete_expense():
+    expense_id = int(input("Enter Expense ID to delete: "))
+    session = Session()
+    expense = session.query(Expense).filter_by(id=expense_id).first()
+
+    if expense:
+        session.delete(expense)
+        session.commit()
+        print('Expense deleted successfully.')
+    else:
+        print('Expense not found.')
+
