@@ -26,3 +26,30 @@ def list_categories():
     for category in categories:
         print(category)
 
+def add_expense():
+    user_id = int(input("Enter User ID: "))
+    category = str(input("Enter Category: "))
+    amount = int(input("Enter Amount: "))
+    date_str = input("Enter Date (YYYY-MM-DD): ")
+
+    try:
+        date = datetime.strptime(date_str, "%d/%m/%Y").date()
+    except ValueError:
+        print("Invalid date format. Please use 'YYYY-MM-DD' format.")
+        return
+
+    session = Session()
+    user = session.query(User).filter_by(id=user_id).first()
+
+    if user:
+        expense = Expense(
+            user=user,
+            category=category,
+            amount=amount,
+            date=date
+        )
+        session.add(expense)
+        session.commit()
+        print('Expense added successfully.')
+    else:
+        print('User not found.')
