@@ -53,3 +53,16 @@ def add_expense():
         print('Expense added successfully.')
     else:
         print('User not found.')
+
+def search_expenses_by_category():
+    category = input("Enter Category to search for: ")
+    session = Session()
+    expenses = session.query(Expense).filter_by(category=category).all()
+
+    if expenses:
+        print(f"\nExpenses in Category '{category}':")
+        for expense in expenses:
+            print(
+                f"ID: {expense.id}, User ID: {expense.user_id}, Amount: {expense.amount}, Date: {expense.date}")
+    else:
+        print(f'No expenses found for the category: {category}')
