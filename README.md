@@ -23,12 +23,10 @@ follow the installation and usage instructions below.
 
 2. Navigate to project directory snf create a virtual env (`cd ~/ExpenseTracker-phase3`)
 
-3. Install the required Python packages(`pip install -r requirements.txt
-`)
+3. Install the required Python packages(`pip install sqlalchemy`)
 
 # Usage
- Run the Expense tracker by running the command `python main.py
-`
+ Run the Expense tracker by running the command `python main.py`
 
 Follow the on-screen menu to excecute various commands and manage your expenses.
 
@@ -45,10 +43,10 @@ Expense Tracker supports the following commands:
 8. Quit: Exit the Expense Tracker application
 
 # Database
-The application uses an SQLite database to store user profiles and expense data. The database file is created automatically when you run the application and is named expenses.db.
+The application uses an SQLite database to store user profiles and expense data. The database file is created automatically when you run the application and is named expenses.db. To view the DB you need to have SQLite Viewer (an extension) installed. Choose "Open With" and choose SQLite Viewer.
 
 # Contributing
 Contributions to this project are welcome. Feel free to open issues, suggest enhancements, or submit pull requests.
 
 # License
-This project is licensed under the MIT License
+This project is licensed under the MIT License.
