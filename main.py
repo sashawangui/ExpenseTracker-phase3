@@ -34,7 +34,7 @@ def add_expense():
     date_str = input("Enter Date (DD-MM-YYYY): ")
 
     try:
-        date = datetime.strptime(date_str, "%d/%m/%Y").date()
+        date = datetime.strptime(date_str, "%d-%m-%Y").date()
     except ValueError:
         print("Invalid date format. Please use 'DD-MM-YYYY' format.")
         return
@@ -53,7 +53,8 @@ def add_expense():
         session.commit()
         print('Expense added successfully.')
     else:
-        print('User not found.')
+        print('Error.')
+
 
 
 def search_expenses_by_category():
